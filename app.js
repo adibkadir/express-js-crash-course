@@ -2,28 +2,18 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const nunjucks = require('nunjucks')
-const {
-  check,
-  validationResult
-} = require('express-validator/check');
-const {
-  matchedData,
-  sanitize
-} = require('express-validator/filter');
+const {check,validationResult} = require('express-validator/check');
+
+//////////////////////////////////////////////////////////////////////////
+
 var users = require('./fakeData.js')
 
+//////////////////////////////////////////////////////////////////////////
 
 const app = express()
 app.listen(3000, (port) => console.log('Server started on port 3000...'));
 
-/*
-const logger = function(req, res, next) {
-  console.log('Logging...')
-  next()
-}
-app.use(logger)
-*/
-
+//////////////////////////////////////////////////////////////////////////
 // View Engine
 nunjucks.configure('views', {
   autoescape: true,
@@ -39,6 +29,9 @@ app.use(bodyParser.urlencoded({
 // Set Static Path
 app.use(express.static(path.join(__dirname, 'public')))
 
+
+//////////////////////////////////////////////////////////////////////////
+
 app.get('/', (req, res) => {
 
   res.render('index.nunjucks', {
@@ -47,7 +40,6 @@ app.get('/', (req, res) => {
   })
 
 })
-
 
 app.post('/users/add', [
     check('name').isLength({ min: 1 }).withMessage('field is required'),
@@ -64,6 +56,11 @@ app.post('/users/add', [
       }
       users.push(newUser)
 
+      res.render('index.nunjucks', {
+        title: 'Customers',
+        users: users,
+        success: true
+      })
 
     } catch (errors) {
 

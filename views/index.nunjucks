@@ -2,6 +2,9 @@
 
 {% block body %}
   <h1>{{title}}</h1>
+  {% if success %}
+  <h1 style="color:green">User added</h1>
+  {% endif %}
   {% if errors %}
   <h1 style="color:red">You have errors</h1>
   <ul>
