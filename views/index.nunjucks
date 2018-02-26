@@ -1,0 +1,37 @@
+{% extends 'base.nunjucks' %}
+
+{% block body %}
+  <h1>{{title}}</h1>
+  {% if errors %}
+  <h1 style="color:red">You have errors</h1>
+  <ul>
+  {% for field, error in errors %}
+    <li>
+      {{field}} {{error['msg']}}
+    </li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+  <form method="POST" action="/users/add">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" name="name">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control">
+        <input class="input" type="text" name="username">
+      </div>
+    </div>
+    <input type="submit" name="" value="Submit">
+  </form>
+  <ul>
+    {% for user in users %}
+      <li>
+        {{user.name}}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

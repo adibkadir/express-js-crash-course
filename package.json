@@ -1,0 +1,25 @@
+{
+  "name": "express-js-crash-course",
+  "version": "1.0.0",
+  "description": "Express tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adibkadir/express-js-crash-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adibkadir/express-js-crash-course/issues"
+  },
+  "homepage": "https://github.com/adibkadir/express-js-crash-course#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-validator": "^5.0.1",
+    "nunjucks": "^3.1.2"
+  }
+}
